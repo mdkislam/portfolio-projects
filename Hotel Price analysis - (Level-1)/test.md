@@ -12,16 +12,16 @@
 	1. **NetRevenue** = `SUM(FactBooking[revenue_realized])`
 	2. **GrossRevenue** = `SUM(FactBooking[revenue_generated])`
 2.  ***Bookings***
-		1. **TotalBookings** = `CALCULATE(COUNTROWS(DISTINCT(FactBooking[booking_id])))`
-		2. **TotalSuccessfulBooking** = `SUM(FactAggregatedBooking[successful_bookings])`
-		3. **TotalCancelledBookings** = `CALCULATE([TotalBooking],FILTER(FactBooking,[booking_status] = "Cancelled"))`
-		4. **Booking %** = `DIVIDE([TotalBooking],CALCULATE([TotalBooking],REMOVEFILTERS(FactBooking[booking_status])))`
-		5. **Cancelled %** = `CALCULATE([booking %],FactBooking[booking_status]="Cancelled")`
-		6. **Checked Out %** = `CALCULATE([booking %],FactBooking[booking_status]="Checked Out")`
-		7. It is also known as **Realization %**
-		8. **No Show %** = `CALCULATE([booking %],FactBooking[booking_status]="No Show")`
-		9. **Booking % by room class** : To show the percentage contribution of each room class over total rooms booked. We have room classes like Standard, Elite, Premium, Presidential.
-			1. `booking % By room_class = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(DimRooms[room_class])))`
+	1. **TotalBookings** = `CALCULATE(COUNTROWS(DISTINCT(FactBooking[booking_id])))`
+	2. **TotalSuccessfulBooking** = `SUM(FactAggregatedBooking[successful_bookings])`
+	3. **TotalCancelledBookings** = `CALCULATE([TotalBooking],FILTER(FactBooking,[booking_status] = "Cancelled"))`
+	4. **Booking %** = `DIVIDE([TotalBooking],CALCULATE([TotalBooking],REMOVEFILTERS(FactBooking[booking_status])))`
+	5. **Cancelled %** = `CALCULATE([booking %],FactBooking[booking_status]="Cancelled")`
+	6. **Checked Out %** = `CALCULATE([booking %],FactBooking[booking_status]="Checked Out")`
+	7. It is also known as **Realization %**
+	8. **No Show %** = `CALCULATE([booking %],FactBooking[booking_status]="No Show")`
+	9. **Booking % by room class** : To show the percentage contribution of each room class over total rooms booked. We have room classes like Standard, Elite, Premium, Presidential.
+		1. `booking % By room_class = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(DimRooms[room_class])))`
 		10. **Booking % by channel** : To show the percentage contribution of each booking platform for bookings in hotels. We have booking platforms like makeyourtrip, logtrip, tripster etc)
 			1. `booking % ByChannel = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(FactBooking[booking_platform])))`
 3. ***available rooms***
