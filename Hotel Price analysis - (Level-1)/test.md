@@ -21,31 +21,30 @@
 	7. It is also known as **Realization %**
 	8. **No Show %** = `CALCULATE([booking %],FactBooking[booking_status]="No Show")`
 	9. **Booking % by room class** : To show the percentage contribution of each room class over total rooms booked. We have room classes like Standard, Elite, Premium, Presidential.
-		1. `booking % By room_class = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(DimRooms[room_class])))`
-		10. **Booking % by channel** : To show the percentage contribution of each booking platform for bookings in hotels. We have booking platforms like makeyourtrip, logtrip, tripster etc)
-			1. `booking % ByChannel = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(FactBooking[booking_platform])))`
+		- `booking % By room_class = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(DimRooms[room_class])))`
+	10. **Booking % by channel** : To show the percentage contribution of each booking platform for bookings in hotels. We have booking platforms like makeyourtrip, logtrip, tripster etc)
+			- `booking % ByChannel = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(FactBooking[booking_platform])))`
 3. ***available rooms***
 	1. **AvailableRooms** = `sum(FactAggregatedBooking[capacity])`
 	2. the available rooms are in hotel industry were called `SRN`
 	3. **SRN**  is sellable room nights
-		1. as it calculated on daily basis it is called as `DSRN`
+		- As it calculated on daily basis it is called as `DSRN`
 	4. **DSRN** -  Daily sellable rooms per night.
-		1. This metrics tells, on average how many rooms are ready to sell for a day considering a time period
-		2. `DSRN = DIVIDE([SRN],[TotalDay])`
+		- This metrics tells, on average how many rooms are ready to sell for a day considering a time period
+		- `DSRN = DIVIDE([SRN],[TotalDay])`
 	5. **DBRN** - Daily booked room per night
-		1. This metrics tells on average how many rooms are booked for a day considering a time period
-		2. `DBRN = [BookedRooms]/[TotalDays]`
+		- This metrics tells on average how many rooms are booked for a day considering a time period
+		- `DBRN = [BookedRooms]/[TotalDays]`
 	6. **DURN** -  Daily utilized room per night
-		1. This metric tells on average how many rooms are successfully utilized by customers for a day considering a time period.
-		2. `DURN = DIVIDE([CheckedOutCount],[TotalDays])`
+		- This metric tells on average how many rooms are successfully utilized by customers for a day considering a time period.
+		- `DURN = DIVIDE([CheckedOutCount],[TotalDays])`
 4. ***occupancy*** - total room occupied / total room available
-	1. you have 100 room hotel. on Monday 50 customers were checked out so occupancy for Sunday would be 50
-	2. `occupancy % = DIVIDE([SuccessfulBookings],[AvailableRooms])`
+	- you have 100 room hotel. on Monday 50 customers were checked out so occupancy for Sunday would be 50
+	- `occupancy % = DIVIDE([SuccessfulBookings],[AvailableRooms])`
 5. ***avg rating***
-	1. `AverageRatings = AVERAGE(FactBooking[ratings_given])`
+	- `AverageRatings = AVERAGE(FactBooking[ratings_given])`
 6. ***Workduration*** 
-	1. `TotalDay = DATEDIFF(MIN(FactBooking[check_in_date]),MAX(FactBooking[check_in_date]),DAY) +1`
-	- 
+	- `TotalDay = DATEDIFF(MIN(FactBooking[check_in_date]),MAX(FactBooking[check_in_date]),DAY) +1`
 7. ***REVPAR*** - revenue per available rooms (total revenue/total available rooms) or ADR * OCCUPANCY
 	1. If you have 100 room hotel and 5 are out of order. then accual available room count is now 95. so if you sold 50 rooms then occupancy rate will be 50/95 not 50/100.
 	2. revpar will be total revenue generate by 50 rooms  divided by 95.
