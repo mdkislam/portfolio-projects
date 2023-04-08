@@ -9,8 +9,8 @@
 
 ## Key Metrics -
 1. ***revenue***
-		1. **NetRevenue** = `SUM(FactBooking[revenue_realized])`
-		2. **GrossRevenue** = `SUM(FactBooking[revenue_generated])`
+	1. **NetRevenue** = `SUM(FactBooking[revenue_realized])`
+	2. **GrossRevenue** = `SUM(FactBooking[revenue_generated])`
 2.  ***Bookings***
 		1. **TotalBookings** = `CALCULATE(COUNTROWS(DISTINCT(FactBooking[booking_id])))`
 		2. **TotalSuccessfulBooking** = `SUM(FactAggregatedBooking[successful_bookings])`
