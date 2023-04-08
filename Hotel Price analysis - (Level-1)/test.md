@@ -39,27 +39,27 @@
 			1. This metric tells on average how many rooms are successfully utilized by customers for a day considering a time period.
 			2. `DURN = DIVIDE([CheckedOutCount],[TotalDays])`
 4. ***occupancy*** - total room occupied / total room available
-		1. you have 100 room hotel. on Monday 50 customers were checked out so occupancy for Sunday would be 50
-		2. `occupancy % = DIVIDE([SuccessfulBookings],[AvailableRooms])`
+	1. you have 100 room hotel. on Monday 50 customers were checked out so occupancy for Sunday would be 50
+	2. `occupancy % = DIVIDE([SuccessfulBookings],[AvailableRooms])`
 5. ***avg rating***
-		1. `AverageRatings = AVERAGE(FactBooking[ratings_given])`
+	1. `AverageRatings = AVERAGE(FactBooking[ratings_given])`
 6. ***Workduration*** 
-		1. `TotalDay = DATEDIFF(MIN(FactBooking[check_in_date]),MAX(FactBooking[check_in_date]),DAY) +1`
+	1. `TotalDay = DATEDIFF(MIN(FactBooking[check_in_date]),MAX(FactBooking[check_in_date]),DAY) +1`
 	- 
 7. ***REVPAR*** - revenue per available rooms (total revenue/total available rooms) or ADR * OCCUPANCY
-		1. If you have 100 room hotel and 5 are out of order. then accual available room count is now 95. so if you sold 50 rooms then occupancy rate will be 50/95 not 50/100.
-		2. revpar will be total revenue generate by 50 rooms  divided by 95.
-		3. so available rooms are vey important key metric.
+	1. If you have 100 room hotel and 5 are out of order. then accual available room count is now 95. so if you sold 50 rooms then occupancy rate will be 50/95 not 50/100.
+	2. revpar will be total revenue generate by 50 rooms  divided by 95.
+	3. so available rooms are vey important key metric.
 8. ***ADR***  - average daily rate 
-		1. `DIVIDE([NetRevenue],[SuccessfulBookings],0)`
-		2. total revenue /  number of room you sold
-		3. If you sold 50 rooms and each room were sold in 1000 rupees you ADR will be 1000.
-		4. If you occupancy is 100% your ADR and REVPAR will be equal.
+	1. `DIVIDE([NetRevenue],[SuccessfulBookings],0)`
+	2. total revenue /  number of room you sold
+	3. If you sold 50 rooms and each room were sold in 1000 rupees you ADR will be 1000.
+	4. If you occupancy is 100% your ADR and REVPAR will be equal.
 ---
 ## Level One analysis
 1. ***Realisation*** - `URN` / `BRN`
-		1. **URN** - utilized room nights -  In 100 rooms hotel and 100 are available rooms if on sunday 50 rooms are booked and customer stayed then `URN` will be 50. when customer staying in room that room is under urn.
-		2. **BRN** - Booked room nights - In 100 rooms hotel and 100 rooms are available. if on sunday 60 rooms are booked and only 50 customers are stayed. then `BRN` will be 60 and `URN` will be 50. 
-		3. `BRN` = `URN` + `CANCLLED`+`NO SHOW`
-		4. **NO SHOW** -  booked and no cancellation and not stayed 
-		5. **Revenue WoW change %** : To get the revenue change percentage week over week.
+	1. **URN** - utilized room nights -  In 100 rooms hotel and 100 are available rooms if on sunday 50 rooms are booked and customer stayed then `URN` will be 50. when customer staying in room that room is under urn.
+	2. **BRN** - Booked room nights - In 100 rooms hotel and 100 rooms are available. if on sunday 60 rooms are booked and only 50 customers are stayed. then `BRN` will be 60 and `URN` will be 50. 
+		- `BRN` = `URN` + `CANCLLED`+`NO SHOW`
+	3. **NO SHOW** -  booked and no cancellation and not stayed 
+	4. **Revenue WoW change %** : To get the revenue change percentage week over week.
