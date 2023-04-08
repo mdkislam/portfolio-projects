@@ -25,19 +25,19 @@
 		10. **Booking % by channel** : To show the percentage contribution of each booking platform for bookings in hotels. We have booking platforms like makeyourtrip, logtrip, tripster etc)
 			1. `booking % ByChannel = DIVIDE([TotalBooking],CALCULATE([TotalBooking],ALL(FactBooking[booking_platform])))`
 3. ***available rooms***
-		1. **AvailableRooms** = `sum(FactAggregatedBooking[capacity])`
-		2. the available rooms are in hotel industry were called `SRN`
-		3. **SRN**  is sellable room nights
-			1. as it calculated on daily basis it is called as `DSRN`
-		4. **DSRN** -  Daily sellable rooms per night.
-			1. This metrics tells, on average how many rooms are ready to sell for a day considering a time period
-			2. `DSRN = DIVIDE([SRN],[TotalDay])`
-		5. **DBRN** - Daily booked room per night
-			1. This metrics tells on average how many rooms are booked for a day considering a time period
-			2. `DBRN = [BookedRooms]/[TotalDays]`
-		6. **DURN** -  Daily utilized room per night
-			1. This metric tells on average how many rooms are successfully utilized by customers for a day considering a time period.
-			2. `DURN = DIVIDE([CheckedOutCount],[TotalDays])`
+	1. **AvailableRooms** = `sum(FactAggregatedBooking[capacity])`
+	2. the available rooms are in hotel industry were called `SRN`
+	3. **SRN**  is sellable room nights
+		1. as it calculated on daily basis it is called as `DSRN`
+	4. **DSRN** -  Daily sellable rooms per night.
+		1. This metrics tells, on average how many rooms are ready to sell for a day considering a time period
+		2. `DSRN = DIVIDE([SRN],[TotalDay])`
+	5. **DBRN** - Daily booked room per night
+		1. This metrics tells on average how many rooms are booked for a day considering a time period
+		2. `DBRN = [BookedRooms]/[TotalDays]`
+	6. **DURN** -  Daily utilized room per night
+		1. This metric tells on average how many rooms are successfully utilized by customers for a day considering a time period.
+		2. `DURN = DIVIDE([CheckedOutCount],[TotalDays])`
 4. ***occupancy*** - total room occupied / total room available
 	1. you have 100 room hotel. on Monday 50 customers were checked out so occupancy for Sunday would be 50
 	2. `occupancy % = DIVIDE([SuccessfulBookings],[AvailableRooms])`
