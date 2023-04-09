@@ -24,8 +24,6 @@ The tables will be linked together through common fields, such as -
 
 # Visualization:
 The dashboard will include several visualizations, including line charts, bar charts, donut chart and tables, to display revenue performance over time, by revenue stream, and by room occupancy, Average User ratings and many more.
-![[Pasted image 20230409143051.png]]
-
 # Layout: 
 The layout of the dashboard will be designed to be easy to navigate and visually appealing. *Filters* will be prominently displayed at the top of the dashboard. *Key metrices* are place in the top right of the visuals.
 
